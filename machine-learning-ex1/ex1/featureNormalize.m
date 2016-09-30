@@ -25,13 +25,13 @@ sigma = zeros(1, size(X, 2));
 %
 % Hint: You might find the 'mean' and 'std' functions useful.
 %       
-
+m = size(X, 1);
 mu = mean(X);
 sigma = std(X);
 
-for i = 1:size(X,2)
-	X_norm(:, i) = (X(:,i)-mu(i))/sigma(i);
-end
+mu_matrix = ones(m, 1) * mu;
+sigma_matrix = ones(m, 1) * sigma;
+X_norm = (X - mu_matrix) ./ sigma_matrix;
 
 
 
