@@ -1,6 +1,6 @@
 %% Machine Learning Online Class - Exercise 1: Linear Regression
 
-%  Instructions/Users/thanhchungbui/Desktop/machine-learning-ex1/ex1/computeCost.m
+%  Instructions
 %  ------------
 % 
 %  This file contains code that helps you get started on the
