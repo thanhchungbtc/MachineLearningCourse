@@ -12,10 +12,12 @@ figure; hold on;
 %               examples and 'ko' for the negative examples.
 %
 
-
-
-
-
+pos = (y==1);
+neg = ~pos;
+plot(X(neg, 1), X(neg, 2), 'ko', 'MarkerSize', 5);
+plot(X(pos, 1), X(pos, 2), 'k+', 'MarkerSize', 5);
+xlabel('Exam 1 score');
+ylabel('Exam 2 score');
 
 
 

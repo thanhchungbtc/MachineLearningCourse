@@ -46,7 +46,7 @@ legend('Admitted', 'Not admitted')
 hold off;
 
 fprintf('\nProgram paused. Press enter to continue.\n');
-pause;
+kbhit;
 
 
 %% ============ Part 2: Compute Cost and Gradient ============
@@ -83,7 +83,7 @@ fprintf(' %f \n', grad);
 fprintf('Expected gradients (approx):\n 0.043\n 2.566\n 2.647\n');
 
 fprintf('\nProgram paused. Press enter to continue.\n');
-pause;
+kbhit;
 
 
 %% ============= Part 3: Optimizing using fminunc  =============
@@ -120,7 +120,7 @@ legend('Admitted', 'Not admitted')
 hold off;
 
 fprintf('\nProgram paused. Press enter to continue.\n');
-pause;
+kbhit;
 
 %% ============== Part 4: Predict and Accuracies ==============
 %  After learning the parameters, you'll like to use it to predict the outcomes
@@ -145,7 +145,6 @@ fprintf('Expected value: 0.775 +/- 0.002\n\n');
 p = predict(theta, X);
 
 fprintf('Train Accuracy: %f\n', mean(double(p == y)) * 100);
-fprintf('Expected accuracy (approx): 89.0\n');
 fprintf('\n');
 
 
