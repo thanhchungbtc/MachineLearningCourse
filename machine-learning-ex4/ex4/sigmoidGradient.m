@@ -14,8 +14,8 @@ g = zeros(size(z));
 
 
 
-
-
+val = sigmoid(z);
+g = val .* (1 - val);
 
 
 

@@ -62,10 +62,29 @@ Theta2_grad = zeros(size(Theta2));
 %               and Theta2_grad from Part 2.
 %
 
+% Part 1
+y_onehot = [1:num_labels] == y;
+% Theta1 (25, 401)
+% Theta2 (10, 26)
+a1 = [ones(m, 1) X]; % (5000, 401)
+z2 = a1 * Theta1'; % (5000, 25)
+a2 = [ones(m, 1) sigmoid(z2)]; % (5000, 26)
+z3 = a2 * Theta2'; % (5000, 10)
+h = a3 = sigmoid(z3); % (5000, 10)
+J = ( 1 / m) * sum(sum(-y_onehot .* log(h) - (1 .- y_onehot) .* log(1 - h)));
 
+% Part 2
+dz3 = a3 - y_onehot; % (5000, 10)
+dz2 = (dz3 * Theta2(:, 2:end)) .* sigmoidGradient(z2); % (5000, 25)
 
+Theta2_grad = (dz3' * a2) / m; % (10, 26)
+Theta1_grad = (dz2' * a1) / m; % (25, 401)
 
-
+# Part 3
+reg_cost = (lambda / (2 * m)) * (sum(sum(Theta1(:, 2:end) .^ 2)) + sum(sum(Theta2(:, 2:end) .^ 2)));
+J = J + reg_cost;
+Theta1_grad(:, 2:end) = Theta1_grad(:, 2:end) .+ (lambda / m) .* Theta1(:, 2:end);
+Theta2_grad(:, 2:end) = Theta2_grad(:, 2:end) .+ (lambda / m) .* Theta2(:, 2:end);
 
 
 
